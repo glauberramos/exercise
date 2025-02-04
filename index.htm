@@ -1,6 +1,98 @@
 <html>
   <head>
     <title>Exercise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+
+      p strong {
+        color: #333;
+        font-weight: 600;
+      }
+
+      ul {
+        list-style: none;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      li {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        color: #444;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      /* For very small screens */
+      @media (max-width: 350px) {
+        body {
+          padding: 10px;
+        }
+
+        ul {
+          grid-template-columns: 1fr;
+        }
+
+        li {
+          padding: 15px;
+        }
+      }
+    </style>
     <script>
       // Function to save input value to localStorage
       function saveToLocalStorage(id, value) {
@@ -21,6 +113,7 @@
   </head>
   <body onload="loadSavedValues()">
     <h2>Treino B</h2>
+    <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
     <ul>
       <li>
         <h3>Fly Inclinado</h3>
@@ -43,24 +136,24 @@
         <img src="voador.png" alt="Voador" />
       </li>
       <li>
-        <h3>Supico Vertical</h3>
+        <h3>Supino Vertical</h3>
         <input
           type="number"
-          id="supicoVertical"
+          id="supinoVertical"
           placeholder="Peso"
           oninput="saveToLocalStorage(this.id, this.value)"
         />
-        <img src="supicoVertical.png" alt="Supico Vertical" />
+        <img src="supinoVertical.png" alt="Supico Vertical" />
       </li>
       <li>
-        <h3>Roldana</h3>
+        <h3>Triceps Roldana</h3>
         <input
           type="number"
-          id="roldana"
+          id="tricepsRoldana"
           placeholder="Peso"
           oninput="saveToLocalStorage(this.id, this.value)"
         />
-        <img src="roldana.png" alt="Roldana" />
+        <img src="tricepsRoldana.png" alt="Triceps Roldana" />
       </li>
       <li>
         <h3>Triceps Testa Aparelho</h3>
@@ -80,7 +173,7 @@
           placeholder="Peso"
           oninput="saveToLocalStorage(this.id, this.value)"
         />
-        <img src="elevacaoFrontal.png" alt="Elevação Frontal" />
+        <img src="elevacaoFrontal.gif" alt="Elevação Frontal" />
       </li>
       <li>
         <h3>Abdominal Normal</h3>
