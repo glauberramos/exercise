@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>Exercise</title>
+    <script>
+      // Function to save input value to localStorage
+      function saveToLocalStorage(id, value) {
+        localStorage.setItem(id, value);
+      }
+
+      // Function to load saved values when page loads
+      function loadSavedValues() {
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+          const savedValue = localStorage.getItem(input.id);
+          if (savedValue) {
+            input.value = savedValue;
+          }
+        });
+      }
+    </script>
+  </head>
+  <body onload="loadSavedValues()">
+    <h2>Treino B</h2>
+    <ul>
+      <li>
+        <h3>Fly Inclinado</h3>
+        <input
+          type="number"
+          id="flyInclinado"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="flyInclinado.png" alt="Fly Inclinado" />
+      </li>
+      <li>
+        <h3>Voador</h3>
+        <input
+          type="number"
+          id="voador"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="voador.png" alt="Voador" />
+      </li>
+      <li>
+        <h3>Supico Vertical</h3>
+        <input
+          type="number"
+          id="supicoVertical"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="supicoVertical.png" alt="Supico Vertical" />
+      </li>
+      <li>
+        <h3>Roldana</h3>
+        <input
+          type="number"
+          id="roldana"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="roldana.png" alt="Roldana" />
+      </li>
+      <li>
+        <h3>Triceps Testa Aparelho</h3>
+        <input
+          type="number"
+          id="tricepsTestaAparelho"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="tricepsTestaAparelho.png" alt="Triceps Testa Aparelho" />
+      </li>
+      <li>
+        <h3>Elevação Frontal</h3>
+        <input
+          type="number"
+          id="elevaçãoFrontal"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="elevacaoFrontal.png" alt="Elevação Frontal" />
+      </li>
+      <li>
+        <h3>Abdominal Normal</h3>
+        <input
+          type="number"
+          id="abdominalNormal"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="abdominalNormal.png" alt="Abdominal Normal" />
+      </li>
+    </ul>
+  </body>
+</html>
