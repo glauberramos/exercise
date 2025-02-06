@@ -14,7 +14,7 @@
       body {
         background-color: #121212;
         padding: 20px;
-        max-width: 800px;
+        max-width: 600px;
         margin: 0 auto;
         color: #fff;
       }
@@ -40,9 +40,9 @@
 
       ul {
         list-style: none;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       }
 
       li {
@@ -58,13 +58,22 @@
         font-size: 1.1rem;
       }
 
+      .exercise-content {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .input-wrapper {
+        flex: 1;
+      }
+
       input {
         width: 100%;
         padding: 12px;
         border: 2px solid #333;
         border-radius: 6px;
         font-size: 1rem;
-        margin-bottom: 15px;
         transition: all 0.3s;
         background-color: #2d2d2d;
         color: #fff;
@@ -81,24 +90,30 @@
       }
 
       img {
-        width: 100%;
+        width: 130px;
+        height: 130px;
         object-fit: cover;
         border-radius: 6px;
         opacity: 0.9;
       }
 
       /* For very small screens */
-      @media (max-width: 350px) {
+      @media (max-width: 400px) {
         body {
           padding: 10px;
         }
 
-        ul {
-          grid-template-columns: 1fr;
-        }
-
         li {
           padding: 15px;
+        }
+
+        .exercise-content {
+          flex-direction: column;
+        }
+
+        img {
+          width: 100%;
+          height: 150px;
         }
       }
     </style>
@@ -125,84 +140,116 @@
     <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
     <ul>
       <li>
-        <h3>Agachamento Com Halter</h3>
-        <input
-          type="number"
-          id="agachamentoComHalter"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="agachamentoComHalter.webp" alt="Agachamento Com Halter" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Agachamento Com Halter</h3>
+            <input
+              type="number"
+              id="agachamentoComHalter"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="agachamentoComHalter.webp" alt="Agachamento Com Halter" />
+        </div>
       </li>
       <li>
-        <h3>Leg Press</h3>
-        <input
-          type="number"
-          id="legPress"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="legPress.gif" alt="Leg Press" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Leg Press</h3>
+            <input
+              type="number"
+              id="legPress"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="legPress.gif" alt="Leg Press" />
+        </div>
       </li>
       <li>
-        <h3>Cadeira Flexora</h3>
-        <input
-          type="number"
-          id="flexorVertical"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="flexorVertical.gif" alt="Flexor Vertical" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Cadeira Flexora</h3>
+            <input
+              type="number"
+              id="flexorVertical"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="flexorVertical.gif" alt="Flexor Vertical" />
+        </div>
       </li>
       <li>
-        <h3>Panturrilha Aparelho</h3>
-        <input
-          type="number"
-          id="panturrilhaAparelho"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="panturrilhaAparelho.webp" alt="Panturrilha Aparelho" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Panturrilha Aparelho</h3>
+            <input
+              type="number"
+              id="panturrilhaAparelho"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="panturrilhaAparelho.webp" alt="Panturrilha Aparelho" />
+        </div>
       </li>
       <li>
-        <h3>Cadeira Extensora</h3>
-        <input
-          type="number"
-          id="extensora"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="extensora.gif" alt="Extensora" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Cadeira Extensora</h3>
+            <input
+              type="number"
+              id="extensora"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="extensora.gif" alt="Extensora" />
+        </div>
       </li>
       <li>
-        <h3>Cadeira Adutora Abrir</h3>
-        <input
-          type="number"
-          id="adutora"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="adutora.gif" alt="Adutora" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Cadeira Adutora Abrir</h3>
+            <input
+              type="number"
+              id="adutora"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="adutora.gif" alt="Adutora" />
+        </div>
       </li>
       <li>
-        <h3>Cadeira Adutora Fechar</h3>
-        <input
-          type="number"
-          id="adutoraFechar"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="adutoraFechar.gif" alt="Adutora Fechar" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Cadeira Adutora Fechar</h3>
+            <input
+              type="number"
+              id="adutoraFechar"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="adutoraFechar.gif" alt="Adutora Fechar" />
+        </div>
       </li>
       <li>
-        <h3>Abdominal Prancha</h3>
-        <input
-          type="number"
-          id="abdominalPrancha"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="abdominalPrancha.png" alt="Abdominal Prancha" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Abdominal Prancha</h3>
+            <input
+              type="number"
+              id="abdominalPrancha"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="abdominalPrancha.png" alt="Abdominal Prancha" />
+        </div>
       </li>
     </ul>
     <br /><br />
@@ -210,74 +257,102 @@
     <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
     <ul>
       <li>
-        <h3>Fly Inclinado</h3>
-        <input
-          type="number"
-          id="flyInclinado"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="flyInclinado.gif" alt="Fly Inclinado" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Fly Inclinado</h3>
+            <input
+              type="number"
+              id="flyInclinado"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="flyInclinado.gif" alt="Fly Inclinado" />
+        </div>
       </li>
       <li>
-        <h3>Voador</h3>
-        <input
-          type="number"
-          id="voador"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="voador.webp" alt="Voador" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Voador</h3>
+            <input
+              type="number"
+              id="voador"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="voador.webp" alt="Voador" />
+        </div>
       </li>
       <li>
-        <h3>Supino Vertical</h3>
-        <input
-          type="number"
-          id="supinoVertical"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="supinoVertical.gif" alt="Supico Vertical" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Supino Vertical</h3>
+            <input
+              type="number"
+              id="supinoVertical"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="supinoVertical.gif" alt="Supico Vertical" />
+        </div>
       </li>
       <li>
-        <h3>Triceps Roldana</h3>
-        <input
-          type="number"
-          id="tricepsRoldana"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="tricepsRoldana.webp" alt="Triceps Roldana" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Triceps Roldana</h3>
+            <input
+              type="number"
+              id="tricepsRoldana"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="tricepsRoldana.webp" alt="Triceps Roldana" />
+        </div>
       </li>
       <li>
-        <h3>Triceps Testa Aparelho</h3>
-        <input
-          type="number"
-          id="tricepsTestaAparelho"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="tricepsTestaAparelho.png" alt="Triceps Testa Aparelho" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Triceps Testa Aparelho</h3>
+            <input
+              type="number"
+              id="tricepsTestaAparelho"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="tricepsTestaAparelho.png" alt="Triceps Testa Aparelho" />
+        </div>
       </li>
       <li>
-        <h3>Elevação Frontal</h3>
-        <input
-          type="number"
-          id="elevaçãoFrontal"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="elevacaoFrontal.gif" alt="Elevação Frontal" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Elevação Frontal</h3>
+            <input
+              type="number"
+              id="elevaçãoFrontal"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="elevacaoFrontal.gif" alt="Elevação Frontal" />
+        </div>
       </li>
       <li>
-        <h3>Abdominal Reto</h3>
-        <input
-          type="number"
-          id="abdominalNormal"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="abdominalNormal.gif" alt="Abdominal Normal" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Abdominal Reto</h3>
+            <input
+              type="number"
+              id="abdominalNormal"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="abdominalNormal.gif" alt="Abdominal Normal" />
+        </div>
       </li>
     </ul>
     <br /><br />
@@ -285,84 +360,116 @@
     <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
     <ul>
       <li>
-        <h3>Puxada Frente Fechada</h3>
-        <input
-          type="number"
-          id="puxadaFrenteFechada"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="puxadaFrenteFechada.jpg" alt="Puxada Frente Fechada" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Puxada Frente Fechada</h3>
+            <input
+              type="number"
+              id="puxadaFrenteFechada"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="puxadaFrenteFechada.jpg" alt="Puxada Frente Fechada" />
+        </div>
       </li>
       <li>
-        <h3>Puxada Baixa</h3>
-        <input
-          type="number"
-          id="puxadaBaixa"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="puxadaBaixa.webp" alt="Puxada Baixa" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Puxada Baixa</h3>
+            <input
+              type="number"
+              id="puxadaBaixa"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="puxadaBaixa.webp" alt="Puxada Baixa" />
+        </div>
       </li>
       <li>
-        <h3>Puxada Alta Com Barra</h3>
-        <input
-          type="number"
-          id="puxadaAltaAberta"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="puxadaAltaAberta.gif" alt="Puxada Alta Com Barra" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Puxada Alta Com Barra</h3>
+            <input
+              type="number"
+              id="puxadaAltaAberta"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="puxadaAltaAberta.gif" alt="Puxada Alta Com Barra" />
+        </div>
       </li>
       <li>
-        <h3>Rosca Alternada</h3>
-        <input
-          type="number"
-          id="roscaAlternada"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="roscaAlternada.gif" alt="Rosca Alternada" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Rosca Alternada</h3>
+            <input
+              type="number"
+              id="roscaAlternada"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="roscaAlternada.gif" alt="Rosca Alternada" />
+        </div>
       </li>
       <li>
-        <h3>Elevação Lateral</h3>
-        <input
-          type="number"
-          id="elevaçãoLateral"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="elevacaoLateral.gif" alt="Elevação Lateral" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Elevação Lateral</h3>
+            <input
+              type="number"
+              id="elevaçãoLateral"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="elevacaoLateral.gif" alt="Elevação Lateral" />
+        </div>
       </li>
       <li>
-        <h3>Rosca Direta</h3>
-        <input
-          type="number"
-          id="roscaDireta"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="roscaDireta.gif" alt="Rosca Direta" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Rosca Direta</h3>
+            <input
+              type="number"
+              id="roscaDireta"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="roscaDireta.gif" alt="Rosca Direta" />
+        </div>
       </li>
       <li>
-        <h3>Posterior Ombro Corda</h3>
-        <input
-          type="number"
-          id="posteriorOmbroCorda"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="posteriorOmbroCorda.gif" alt="Posterior Ombro Corda" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Posterior Ombro Corda</h3>
+            <input
+              type="number"
+              id="posteriorOmbroCorda"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="posteriorOmbroCorda.gif" alt="Posterior Ombro Corda" />
+        </div>
       </li>
       <li>
-        <h3>Abdominal Oblíquo</h3>
-        <input
-          type="number"
-          id="abdominalCruzado"
-          placeholder="Peso"
-          oninput="saveToLocalStorage(this.id, this.value)"
-        />
-        <img src="abdominalCruzado.gif" alt="Abdominal Cruzado" />
+        <div class="exercise-content">
+          <div class="input-wrapper">
+            <h3>Abdominal Oblíquo</h3>
+            <input
+              type="number"
+              id="abdominalCruzado"
+              placeholder="Peso"
+              oninput="saveToLocalStorage(this.id, this.value)"
+            />
+          </div>
+          <img src="abdominalCruzado.gif" alt="Abdominal Cruzado" />
+        </div>
       </li>
     </ul>
   </body>
