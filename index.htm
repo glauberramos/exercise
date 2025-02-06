@@ -121,6 +121,91 @@
     </script>
   </head>
   <body onload="loadSavedValues()">
+    <h2>Treino A</h2>
+    <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
+    <ul>
+      <li>
+        <h3>Agachamento Com Halter</h3>
+        <input
+          type="number"
+          id="agachamentoComHalter"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="agachamentoComHalter.webp" alt="Agachamento Com Halter" />
+      </li>
+      <li>
+        <h3>Leg Press</h3>
+        <input
+          type="number"
+          id="legPress"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="legPress.gif" alt="Leg Press" />
+      </li>
+      <li>
+        <h3>Cadeira Flexora</h3>
+        <input
+          type="number"
+          id="flexorVertical"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="flexorVertical.gif" alt="Flexor Vertical" />
+      </li>
+      <li>
+        <h3>Panturrilha Aparelho</h3>
+        <input
+          type="number"
+          id="panturrilhaAparelho"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="panturrilhaAparelho.webp" alt="Panturrilha Aparelho" />
+      </li>
+      <li>
+        <h3>Cadeira Extensora</h3>
+        <input
+          type="number"
+          id="extensora"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="extensora.gif" alt="Extensora" />
+      </li>
+      <li>
+        <h3>Cadeira Adutora Abrir</h3>
+        <input
+          type="number"
+          id="adutora"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="adutora.gif" alt="Adutora" />
+      </li>
+      <li>
+        <h3>Cadeira Adutora Fechar</h3>
+        <input
+          type="number"
+          id="adutoraFechar"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="adutoraFechar.gif" alt="Adutora Fechar" />
+      </li>
+      <li>
+        <h3>Abdominal Prancha</h3>
+        <input
+          type="number"
+          id="abdominalPrancha"
+          placeholder="Peso"
+          oninput="saveToLocalStorage(this.id, this.value)"
+        />
+        <img src="abdominalPrancha.png" alt="Abdominal Prancha" />
+      </li>
+    </ul>
+    <br /><br />
     <h2>Treino B</h2>
     <p><strong>3 séries</strong> de <strong>12 repetições</strong></p>
     <ul>
@@ -152,7 +237,7 @@
           placeholder="Peso"
           oninput="saveToLocalStorage(this.id, this.value)"
         />
-        <img src="supinoVertical.png" alt="Supico Vertical" />
+        <img src="supinoVertical.gif" alt="Supico Vertical" />
       </li>
       <li>
         <h3>Triceps Roldana</h3>
@@ -257,7 +342,7 @@
           placeholder="Peso"
           oninput="saveToLocalStorage(this.id, this.value)"
         />
-        <img src="posteriorOmbroCorda.png" alt="Posterior Ombro Corda" />
+        <img src="posteriorOmbroCorda.gif" alt="Posterior Ombro Corda" />
       </li>
       <li>
         <h3>Abdominal Oblíquo</h3>
