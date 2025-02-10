@@ -369,14 +369,6 @@
         localStorage.setItem(`workout_${selectedDate}`, workout);
         renderCalendar();
 
-        const buttons = document.querySelectorAll(".workout-button");
-        buttons.forEach((button) => {
-          button.classList.remove("selected");
-          if (button.dataset.workout === workout) {
-            button.classList.add("selected");
-          }
-        });
-
         // Update remove button state
         updateRemoveButton();
       }
