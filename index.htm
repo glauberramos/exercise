@@ -356,6 +356,10 @@
       #customWorkoutButtons .workout-button:hover {
         background: #3d3d3d;
       }
+
+      .calendar-button + .calendar-button {
+        margin-left: 10px;
+      }
     </style>
     <script src="exercises.js"></script>
     <script>
@@ -702,6 +706,132 @@
 
       // Call this when page loads
       document.addEventListener("DOMContentLoaded", displayCustomWorkouts);
+
+      let editingWorkoutData = null;
+
+      function openEditWorkoutModal() {
+        const modal = document.getElementById("editWorkoutModal");
+        modal.style.display = "flex";
+
+        // Populate workout select
+        const workouts = JSON.parse(
+          localStorage.getItem("customWorkouts") || "[]"
+        );
+        const select = document.getElementById("workoutSelect");
+        select.innerHTML =
+          '<option value="">Selecione um treino para editar</option>';
+
+        workouts.forEach((workout, index) => {
+          const option = document.createElement("option");
+          option.value = index;
+          option.textContent = workout.name;
+          select.appendChild(option);
+        });
+
+        // Populate exercise select
+        const exerciseSelect = document.getElementById("editExerciseSelect");
+        exerciseSelect.innerHTML =
+          '<option value="">Selecione um exercício</option>';
+        exercises.forEach((exercise) => {
+          const option = document.createElement("option");
+          option.value = exercise.name;
+          option.textContent = exercise.name;
+          exerciseSelect.appendChild(option);
+        });
+
+        // Add change event listener to workout select
+        select.onchange = loadWorkoutForEdit;
+      }
+
+      function loadWorkoutForEdit() {
+        const select = document.getElementById("workoutSelect");
+        const workouts = JSON.parse(
+          localStorage.getItem("customWorkouts") || "[]"
+        );
+        const selectedWorkout = workouts[select.value];
+
+        if (selectedWorkout) {
+          editingWorkoutData = { ...selectedWorkout };
+          document.getElementById("editWorkoutContent").style.display = "block";
+          renderEditExercises();
+        } else {
+          document.getElementById("editWorkoutContent").style.display = "none";
+          editingWorkoutData = null;
+        }
+      }
+
+      function renderEditExercises() {
+        if (!editingWorkoutData) return;
+
+        const container = document.getElementById("editExerciseList");
+        container.innerHTML = editingWorkoutData.exercises
+          .map(
+            (exercise, index) => `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background: #2d2d2d; border-radius: 5px;">
+            <span>${exercise.name}</span>
+            <button onclick="removeEditExercise(${index})" style="background: #cc3300; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">
+              Remover
+            </button>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      function addExerciseToEdit() {
+        if (!editingWorkoutData) return;
+
+        const select = document.getElementById("editExerciseSelect");
+        const exerciseName = select.value;
+
+        if (!exerciseName) return;
+
+        const exercise = exercises.find((e) => e.name === exerciseName);
+        if (exercise) {
+          editingWorkoutData.exercises.push({
+            name: exercise.name,
+            gif: exercise.gif,
+            id: exercise.id,
+          });
+          renderEditExercises();
+        }
+      }
+
+      function removeEditExercise(index) {
+        if (!editingWorkoutData) return;
+
+        editingWorkoutData.exercises.splice(index, 1);
+        renderEditExercises();
+      }
+
+      function saveEditedWorkout() {
+        if (!editingWorkoutData) return;
+
+        const workouts = JSON.parse(
+          localStorage.getItem("customWorkouts") || "[]"
+        );
+        const index = workouts.findIndex((w) => w.id === editingWorkoutData.id);
+
+        if (index === -1) {
+          alert("Erro ao salvar alterações");
+          return;
+        }
+
+        workouts[index] = editingWorkoutData;
+        localStorage.setItem("customWorkouts", JSON.stringify(workouts));
+
+        closeEditWorkout();
+        displayCustomWorkouts();
+      }
+
+      function closeEditWorkout() {
+        const modal = document.getElementById("editWorkoutModal");
+        modal.style.display = "none";
+        editingWorkoutData = null;
+        document.getElementById("workoutSelect").value = "";
+        document.getElementById("editWorkoutContent").style.display = "none";
+        document.getElementById("editExerciseList").innerHTML = "";
+      }
     </script>
   </head>
   <body onload="loadSavedValues()">
@@ -1201,6 +1331,13 @@
     <button class="calendar-button" onclick="openCreateWorkout()">
       Criar Novo Treino
     </button>
+    <button
+      class="calendar-button"
+      onclick="openEditWorkoutModal()"
+      style="margin-left: 10px"
+    >
+      Editar Treino Existente
+    </button>
     <div id="customWorkouts"></div>
 
     <div id="createWorkoutModal" class="modal">
@@ -1248,6 +1385,64 @@
           <button onclick="saveWorkout()" class="calendar-button">
             Salvar Treino
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="editWorkoutModal" class="modal">
+      <div class="modal-content">
+        <h3 class="modal-title">Editar Treino</h3>
+        <button class="close-button" onclick="closeEditWorkout()">
+          &times;
+        </button>
+
+        <div class="workout-form">
+          <select
+            id="workoutSelect"
+            style="
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 20px;
+              background: #2d2d2d;
+              color: white;
+              border: 1px solid #444;
+            "
+          >
+            <option value="">Selecione um treino para editar</option>
+          </select>
+
+          <div id="editWorkoutContent" style="display: none">
+            <div class="exercise-selector">
+              <select
+                id="editExerciseSelect"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  margin-bottom: 10px;
+                  background: #2d2d2d;
+                  color: white;
+                  border: 1px solid #444;
+                "
+              >
+                <option value="">Selecione um exercício</option>
+              </select>
+              <button
+                onclick="addExerciseToEdit()"
+                class="calendar-button"
+                style="margin-bottom: 20px"
+              >
+                Adicionar Exercício
+              </button>
+            </div>
+
+            <div id="editExerciseList" style="margin-bottom: 20px">
+              <!-- Exercises will be listed here -->
+            </div>
+
+            <button onclick="saveEditedWorkout()" class="calendar-button">
+              Salvar Alterações
+            </button>
+          </div>
         </div>
       </div>
     </div>
