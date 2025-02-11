@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #121212;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #999;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+p strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.exercise-content {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.input-wrapper {
+  flex: 1;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0066cc;
+  background-color: #333;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.9;
+}
+
+/* For very small screens */
+@media (max-width: 400px) {
+  body {
+    padding: 10px;
+  }
+
+  li {
+    padding: 15px;
+  }
+
+  .exercise-content {
+    flex-direction: column;
+  }
+
+  img {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+.calendar-button {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.calendar-button:hover {
+  background: #0052a3;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.calendar-header span {
+  font-weight: bold;
+  color: #888;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #2d2d2d;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.calendar-day:hover {
+  background: #333;
+}
+
+.calendar-day.today {
+  border: 2px solid #0066cc;
+}
+
+.calendar-day .workout-label {
+  font-size: 0.7rem;
+  color: #0066cc;
+  margin-top: 2px;
+}
+
+.workout-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.workout-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.remove-workout-button {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #cc3300;
+  color: white;
+  width: 100%;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.remove-workout-button:hover {
+  opacity: 1;
+}
+
+.remove-workout-button:disabled {
+  background: #444;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.close-button {
+  color: #888;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.close-button:hover {
+  color: #fff;
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  padding-right: 30px;
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.month-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav-button {
+  background: #2d2d2d;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #3d3d3d;
+}
+
+.nav-button svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+#customWorkoutButtons {
+  margin-top: 10px;
+  width: 100%;
+}
+
+#customWorkoutButtons .workout-button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+#customWorkoutButtons .workout-button:hover {
+  background: #3d3d3d;
+}
+
+.calendar-button + .calendar-button {
+  margin-left: 10px;
+}
