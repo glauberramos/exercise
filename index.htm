@@ -367,6 +367,7 @@
       // Function to load saved values when page loads
       function loadSavedValues() {
         const inputs = document.querySelectorAll("input");
+
         inputs.forEach((input) => {
           const savedValue = localStorage.getItem(input.id);
           if (savedValue) {
@@ -559,7 +560,12 @@
 
         const exercise = exercises.find((e) => e.name === exerciseName);
         if (exercise) {
-          selectedExercises.push(exercise);
+          selectedExercises.push({
+            name: exercise.name,
+            gif: exercise.gif,
+            id: exercise.id,
+          });
+
           renderSelectedExercises();
         }
       }
@@ -638,7 +644,7 @@
                       <h3>${exercise.name}</h3>
                       <input
                         type="number"
-                        id="${workout.name}_${exercise.name}"
+                        id="${exercise.id}"
                         placeholder="Peso"
                         oninput="saveToLocalStorage(this.id, this.value)"
                       />
@@ -657,6 +663,8 @@
         `
           )
           .join("");
+
+        loadSavedValues();
       }
 
       function deleteWorkout(index) {
