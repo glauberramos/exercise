@@ -337,6 +337,25 @@
         height: 16px;
         fill: currentColor;
       }
+
+      #customWorkoutButtons {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      #customWorkoutButtons .workout-button {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+        transition: background 0.2s ease;
+      }
+
+      #customWorkoutButtons .workout-button:hover {
+        background: #3d3d3d;
+      }
     </style>
     <script src="exercises.js"></script>
     <script>
@@ -397,6 +416,7 @@
         const modal = document.getElementById("calendarModal");
         modal.style.display = "flex";
         renderCalendar();
+        displayCustomWorkoutButtons();
       }
 
       function closeCalendar() {
@@ -650,6 +670,28 @@
         displayCustomWorkouts();
       }
 
+      function displayCustomWorkoutButtons() {
+        const customWorkouts = JSON.parse(
+          localStorage.getItem("customWorkouts") || "[]"
+        );
+        const container = document.getElementById("customWorkoutButtons");
+
+        container.innerHTML = customWorkouts
+          .map(
+            (workout) => `
+          <button 
+            class="workout-button" 
+            data-workout="${workout.name}"
+            onclick="selectWorkout('${workout.name}')"
+            style="background: #2d2d2d;"
+          >
+            ${workout.name}
+          </button>
+        `
+          )
+          .join("");
+      }
+
       // Call this when page loads
       document.addEventListener("DOMContentLoaded", displayCustomWorkouts);
     </script>
@@ -715,6 +757,16 @@
             >
               Treino C
             </button>
+
+            <div
+              id="customWorkoutButtons"
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                margin-top: 10px;
+              "
+            ></div>
           </div>
           <button
             id="removeWorkoutButton"
