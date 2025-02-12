@@ -5,7 +5,7 @@ var exercises = [
     id: "abdominalCruzado",
   },
   {
-    name: "Abdominal Normal",
+    name: "Abdominal Reto",
     gif: "abdominalNormal.gif",
     id: "abdominalNormal",
   },
@@ -27,7 +27,7 @@ var exercises = [
   {
     name: "Cadeira Flexora",
     gif: "flexorVertical.gif",
-    id: "cadeiraFlexora",
+    id: "flexorVertical",
   },
   {
     name: "Panturrilha Aparelho",
@@ -37,17 +37,17 @@ var exercises = [
   {
     name: "Cadeira Extensora",
     gif: "extensora.gif",
-    id: "cadeiraExtensora",
+    id: "extensora",
   },
   {
     name: "Cadeira Adutora Abrir",
     gif: "adutora.gif",
-    id: "cadeiraAdutoraAbrir",
+    id: "adutora",
   },
   {
     name: "Cadeira Adutora Fechar",
     gif: "adutoraFechar.gif",
-    id: "cadeiraAdutoraFechar",
+    id: "adutoraFechar",
   },
   {
     name: "Fly Inclinado",
@@ -77,7 +77,7 @@ var exercises = [
   {
     name: "Elevação Frontal",
     gif: "elevacaoFrontal.gif",
-    id: "elevacaoFrontal",
+    id: "elevaçãoFrontal",
   },
   {
     name: "Puxada Frente Fechada",
@@ -102,7 +102,7 @@ var exercises = [
   {
     name: "Elevação Lateral",
     gif: "elevacaoLateral.gif",
-    id: "elevacaoLateral",
+    id: "elevaçãoLateral",
   },
   {
     name: "Rosca Direta",
