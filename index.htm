@@ -352,6 +352,9 @@
             <button onclick="deleteWorkout(${index})" class="remove-workout-button" style="margin-top: 10px;">
               Excluir Treino
             </button>
+            <button onclick="editWorkout(${index})" class="remove-workout-button" style="margin-top: 10px;">
+              Editar Treino
+            </button>
           </div>
         `
           )
@@ -398,24 +401,9 @@
 
       let editingWorkoutData = null;
 
-      function openEditWorkoutModal() {
+      function editWorkout(index) {
         const modal = document.getElementById("editWorkoutModal");
         modal.style.display = "flex";
-
-        // Populate workout select
-        const workouts = JSON.parse(
-          localStorage.getItem("customWorkouts") || "[]"
-        );
-        const select = document.getElementById("workoutSelect");
-        select.innerHTML =
-          '<option value="">Selecione um treino para editar</option>';
-
-        workouts.forEach((workout, index) => {
-          const option = document.createElement("option");
-          option.value = index;
-          option.textContent = workout.name;
-          select.appendChild(option);
-        });
 
         // Populate exercise select
         const exerciseSelect = document.getElementById("editExerciseSelect");
@@ -428,16 +416,14 @@
           exerciseSelect.appendChild(option);
         });
 
-        // Add change event listener to workout select
-        select.onchange = loadWorkoutForEdit;
+        loadWorkoutForEdit(index);
       }
 
-      function loadWorkoutForEdit() {
-        const select = document.getElementById("workoutSelect");
+      function loadWorkoutForEdit(index) {
         const workouts = JSON.parse(
           localStorage.getItem("customWorkouts") || "[]"
         );
-        const selectedWorkout = workouts[select.value];
+        const selectedWorkout = workouts[index];
 
         if (selectedWorkout) {
           editingWorkoutData = { ...selectedWorkout };
@@ -1020,13 +1006,6 @@
     <button class="calendar-button" onclick="openCreateWorkout()">
       Criar Novo Treino
     </button>
-    <button
-      class="calendar-button"
-      onclick="openEditWorkoutModal()"
-      style="margin-left: 10px"
-    >
-      Editar Treino Existente
-    </button>
     <div id="customWorkouts"></div>
 
     <div id="createWorkoutModal" class="modal">
@@ -1086,20 +1065,6 @@
         </button>
 
         <div class="workout-form">
-          <select
-            id="workoutSelect"
-            style="
-              width: 100%;
-              padding: 10px;
-              margin-bottom: 20px;
-              background: #2d2d2d;
-              color: white;
-              border: 1px solid #444;
-            "
-          >
-            <option value="">Selecione um treino para editar</option>
-          </select>
-
           <div id="editWorkoutContent" style="display: none">
             <div class="exercise-selector">
               <select
