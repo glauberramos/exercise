@@ -1,3 +1,82 @@
+let selectedDate = null;
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
+function changeMonth(delta) {
+  currentMonth += delta;
+
+  // Handle year change
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  } else if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  }
+
+  renderCalendar();
+}
+
+function getMonthName(month) {
+  const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
+  return months[month];
+}
+
+function removeWorkoutFromDay() {
+  if (!selectedDate) return;
+
+  localStorage.removeItem(`workout_${selectedDate}`);
+  renderCalendar();
+
+  // Reset workout buttons selection
+  const buttons = document.querySelectorAll(".workout-button");
+  buttons.forEach((button) => button.classList.remove("selected"));
+
+  // Disable remove button
+  updateRemoveButton();
+}
+
+function updateRemoveButton() {
+  const removeButton = document.getElementById("removeWorkoutButton");
+  const hasWorkout =
+    selectedDate && localStorage.getItem(`workout_${selectedDate}`);
+
+  removeButton.disabled = !hasWorkout;
+}
+
+function selectDate(date) {
+  selectedDate = date;
+
+  // Update remove button state
+  updateRemoveButton();
+
+  const buttons = document.querySelectorAll(".workout-button");
+  const savedWorkout = localStorage.getItem(`workout_${date}`);
+}
+
+function selectWorkout(workout) {
+  if (!selectedDate) return;
+
+  localStorage.setItem(`workout_${selectedDate}`, workout);
+  renderCalendar();
+
+  // Update remove button state
+  updateRemoveButton();
+}
+
 function renderCalendar() {
   const firstDay = new Date(currentYear, currentMonth, 1);
   const lastDay = new Date(currentYear, currentMonth + 1, 0);
